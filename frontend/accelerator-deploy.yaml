@@ -15,6 +15,6 @@ spec:
     - cloud-native-developers
   git:
     ignore: ".git/, target, catalog"
-    url: https://github.com/gorkemozlu/acme-fitness-tap/frontend
+    url: https://github.com/gorkemozlu/acme-fitness-tap
     ref:
       branch: main
