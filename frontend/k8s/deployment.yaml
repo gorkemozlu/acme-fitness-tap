@@ -1,0 +1,29 @@
+#@ load("@ytt:data", "data")
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-v2
+  labels:
+    app: acmefit
+    service: shopping-v2
+spec:
+  selector:
+    matchLabels:
+      app: acmefit
+      service: shopping-v2
+  strategy:
+    type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: acmefit
+        service: shopping-v2
+    spec:
+      containers:
+      - image: #@ data.values.img
+        name: shopping-v2
+        ports:
+        - containerPort: 8080
+          name: http-frontend

@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: istio
+  name: acme-gateway
+  namespace: acme
+spec:
+  rules:
+  - host: acme.apps.tkg-lab.k10s.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: acme-gateway
+            port: 
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - acme.apps.tkg-lab.k10s.io
+    secretName: shopping-cert

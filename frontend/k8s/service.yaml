@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shopping-v2
+  labels:
+    app: acmefit
+    service: shopping-v2
+spec:
+  ports:
+    - name: http-server
+      port: 8080
+      appProtocol: http
+  selector:
+    app: acmefit
+    service: shopping-v2
+  type: ClusterIP

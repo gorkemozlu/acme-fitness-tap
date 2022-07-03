@@ -1,0 +1,76 @@
+accelerator:
+  displayName: Shopping Frontend
+  description: A Frontend Single-Page-App with SSO.  Consumes backend APIs like shopping cart and catalog.
+  iconUrl: https://raw.githubusercontent.com/rhardt-pivotal/accelerator-icons/main/ui.png?raw=true
+  tags: 
+  - frontend
+  - react
+  - accelerator
+  - javascript
+  options:
+  - name: gitRepo
+    label: Git repo
+    inputType: text
+    required: true
+    dataType: string
+    defaultValue: https://github.com/gorkemozlu/acme-fitness-tap
+  - name: parentApp
+    label: Name of parent application (the Big A app)
+    description: Name of the parent application this component is a part of
+    inputType: text
+    dataType: string
+    defaultValue: acme-fitness
+  - name: hasTests
+    label: CI Test
+    inputType: checkbox
+    display: true
+    required: true
+    dataType: boolean
+    defaultValue: false
+  - name: branchName
+    label: Branch of the Repo
+    description: Please type the branch to develop
+    inputType: text
+    dataType: string
+    defaultValue: main
+  - name: namespaceToDeploy
+    label: Namespace to deploy
+    description: Please type the namespace to deploy
+    inputType: text
+    dataType: string
+    defaultValue: dev
+  - name: baseUrl
+    label: Base Url
+    description: This is the URL at which this app will be accessed by a web browser.
+    defaultValue: https://shop.acme.example.com
+  - name: cartUrl
+    label: Cart Url
+    description: This is the URL where the front end will look for the shopping cart.
+    defaultValue: https://cart.acme.example.com
+  - name: catalogUrl
+    label: Catalog Url
+    description: This is the URL where the front end will look for the catalog.
+    defaultValue: https://catalog.acme.example.com
+  - name: orderUrl
+    label: Order Url
+    description: This is the URL where the front end will send orders.
+    defaultValue: https://order.acme.example.com
+
+engine:
+  merge:
+  - includes: ["frontend/**/*"]
+  - includes: [ "frontend/config/deploy/tap/**"]
+    chain:
+      - type: YTT
+  - includes: ['frontend/src/shared/baseUrl-prod.js'] 
+    chain:
+    - type: ReplaceText
+      substitutions:
+      - text: "$$baseUrl"
+        with: "#baseUrl"
+      - text: "$$cartUrl"
+        with: "#cartUrl"
+      - text: "$$catalogUrl"
+        with: "#catalogUrl"
+      - text: "$$orderUrl"
+        with: "#orderUrl"                        

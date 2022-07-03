@@ -1,0 +1,27 @@
+apiVersion: "tanzu.vmware.com/v1"
+kind: SpringCloudGatewayRouteConfig
+metadata:
+  name: shopping-gateway-routes
+spec:
+  routes:
+  - uri: http://shopping.rhardt.mesh
+    predicates:
+      - Path=/shop/**
+    filters:
+      - StripPrefix=1
+  - uri: http://shopping.rhardt.mesh
+    predicates:
+      - Path=/
+    filters: 
+      - RedirectTo=302, /shop
+---
+
+apiVersion: "tanzu.vmware.com/v1"
+kind: SpringCloudGatewayMapping
+metadata:
+  name: shopping-gateway-route-mapping
+spec:
+  gatewayRef:
+    name: acme-gateway
+  routeConfigRef:
+    name: shopping-gateway-routes

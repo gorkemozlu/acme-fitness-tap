@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -eux
+
+echo "****PRE-COMMIT prepping build dir"
+k8s/prep-build.sh

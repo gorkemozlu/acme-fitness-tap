@@ -1,0 +1,5 @@
+**/tmp
+build
+dist
+.idea
+node_modules

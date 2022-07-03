@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cart-cert
+  namespace: istio-system
+spec:
+  commonName: 'cart.apps.tkg-lab.k10s.io'
+  dnsNames:
+  - 'cart.apps.tkg-lab.k10s.io'
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-contour-cluster-issuer
+  secretName: cart-cert

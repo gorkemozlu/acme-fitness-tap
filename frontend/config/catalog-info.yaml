@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: acme-fitness-frontend
+  description: Acme Fitness Frontend
+  tags:
+    - app-accelerator
+    - frontend
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=acme-fitness'
+spec:
+  type: service
+  lifecycle: experimental
+  owner: team-acme-fitness-product-catalog
+  system: acme-fitness-apis-system

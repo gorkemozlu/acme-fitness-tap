@@ -1,0 +1,23 @@
+apiVersion: tanzu.vmware.com/v1
+kind: SpringCloudGateway
+metadata:
+  name: acme-gateway
+spec:
+  api:
+    description: This is the front end of Acme Fitness.  These API endpoints allow you to pull the static site assets as well as cached images.
+    serverUrl: https://acme.apps.tkg-lab.k10s.io
+    title: Acme Fitness Front End
+    version: 0.1.0
+    cors:
+      allowedOrigins:
+        - "*"
+      allowedMethods:
+        - "GET"
+        - "PUT"
+        - "POST"    
+        - "DELETE"
+        - "HEAD"
+        - "OPTIONS"
+  sso:
+    secret: acme-sso-credentials    
+  count: 1

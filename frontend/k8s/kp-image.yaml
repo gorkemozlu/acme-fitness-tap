@@ -1,0 +1,24 @@
+#@ load("@ytt:data", "data")
+
+apiVersion: kpack.io/v1alpha1
+kind: Image
+metadata:
+  name: #@ data.values.projectName
+  namespace: acme-build
+spec:
+  build:
+    resources: {}
+  builder:
+    kind: ClusterBuilder
+    name: default
+  cacheSize: 2G
+  failedBuildHistoryLimit: 10
+  imageTaggingStrategy: BuildNumber
+  serviceAccount: default
+  source:
+    git:
+      url: #@ data.values.destinationGit
+      revision: main
+    subpath: deploy
+  successBuildHistoryLimit: 10
+  tag: #@ data.values.imageRepo

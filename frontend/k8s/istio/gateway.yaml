@@ -1,0 +1,27 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: acme-istio-gateway
+  namespace: acmefitness
+spec:
+  selector:
+    app: spring-cloud-gateway
+    gateway.name: acme-api-gateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - acme.apps.psl.k10s.io
+    tls:
+      httpsRedirect: true # sends 301 redirect for http requests
+  - port:
+      number: 443
+      name: https-443
+      protocol: HTTPS
+    hosts:
+    - acme.apps.psl.k10s.io
+    tls:
+      mode: SIMPLE # enables HTTPS on this port
+      credentialName: acme-cert-secret-2

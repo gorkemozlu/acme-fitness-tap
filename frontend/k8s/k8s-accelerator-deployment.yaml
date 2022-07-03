@@ -1,0 +1,9 @@
+apiVersion: accelerator.apps.tanzu.vmware.com/v1alpha1
+kind: Accelerator
+metadata:
+  name: frontend-accelerator
+spec:
+  git:
+    url: https://gitlab.gitlab.ss.acmeaws.k10s.io/accelerators/frontend
+    ref:
+      branch: main

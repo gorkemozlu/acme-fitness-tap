@@ -1,0 +1,6 @@
+export const baseUrl = 'https://acme.apps.tkg-lab.k10s.io/';
+export const catalogUrl = 'https://catalog.apps.tkg-lab.k10s.io/';
+export const cartUrl = 'https://cart.apps.tkg-lab.k10s.io/';
+export const orderUrl = 'https://order.apps.tkg-lab.k10s.io/';
+// export const baseUrl = 'http://localhost:3000/';
+

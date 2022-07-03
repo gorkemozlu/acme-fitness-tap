@@ -1,0 +1,16 @@
+#@ load("@ytt:data", "data")
+
+#@ def format(acc):
+#@   return "https://"+data.values.gitlab["web-domain"]+acc
+#@ end
+
+
+apiVersion: accelerator.apps.tanzu.vmware.com/v1alpha1
+kind: Accelerator
+metadata:
+  name: frontend-accelerator
+spec:
+  git:
+    url: #@ format("/accelerators/frontend")
+    ref:
+      branch: main            

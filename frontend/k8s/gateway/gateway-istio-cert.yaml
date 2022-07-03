@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: acme-cert
+  namespace: istio-system
+spec:
+  secretName: acme-cert
+  commonName: acme.apps.tkg-lab.k10s.io
+  dnsNames:
+  - acme.apps.tkg-lab.k10s.io
+  issuerRef:
+    name: letsencrypt-contour-cluster-issuer
+    kind: ClusterIssuer

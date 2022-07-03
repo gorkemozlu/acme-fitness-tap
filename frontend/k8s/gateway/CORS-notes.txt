@@ -1,0 +1,5 @@
+to enable CORS so you can debug from a local client, you can add this env value to the spring process in your spring-cloud-gateway statefulset:
+Would be quite dangerous in production, though.
+
+- name: SPRING_APPLICATION_JSON
+  value: '{"spring": {"cloud": {"gateway": {"globalcors": {"corsConfigurations": {"[/**]": {"allowedOrigins": "*","allowedHeaders": ["content-type", "authorization"],"allowedMethods": ["GET","POST","PUT","DELETE"]}}}}}}}'
